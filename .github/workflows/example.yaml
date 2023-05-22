@@ -20,5 +20,3 @@ jobs:
     steps:
       - id: test
         run: echo should "${{needs.job1.outputs.notfancy}}"
-      # - run: echo out="${{needs.job1.outputs.notfancy}}" >> $GITHUB_OUTPUT
-      # - run: echo "event=${{ toJson(github) }}" >> $GITHUB_OUTPUT
