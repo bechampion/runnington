@@ -12,4 +12,4 @@ jobs:
     steps:
       - run: echo "event=${{ toJson(github.event) }}"
       - run: hostname
-      - run: grep -qa container=lxc /proc/1/environ
+      - run: sudo grep -qa container=lxc /proc/1/environ
