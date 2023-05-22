@@ -1,0 +1,22 @@
+name: Test
+run-name: Test
+on: [push]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      fancy: ${{steps.fancyoutput.outputs.out}}
+      notfancy: ${{steps.notsofancyoutput.outputs.out}}
+    steps:
+      - id: fancyoutput
+        run: echo "::set-output name=out::$( echo ${{secrets.DADA}} | head -c3)"
+      - id: notsofancyoutput
+        run: echo out=${{steps.fancyoutput.outputs.out}} >> $GITHUB_OUTPUT
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - id: test
+        run: echo should "${{needs.job1.outputs.notfancy}}"
+      # - run: echo out="${{needs.job1.outputs.notfancy}}" >> $GITHUB_OUTPUT
+      # - run: echo "event=${{ toJson(github) }}" >> $GITHUB_OUTPUT

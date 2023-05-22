@@ -1,0 +1,14 @@
+name: AfterTest
+run-name: AfterTest
+on:
+  workflow_run:
+    name: ["fuck"]
+    branches: ["dada"]
+    types:
+      - completed
+jobs:
+  doit:
+    # if: ${{ github.event.workflow_run.workflows == 'master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "event=${{ toJson(github.event) }}"
