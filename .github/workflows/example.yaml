@@ -12,6 +12,7 @@ jobs:
         run: echo "::set-output name=out::$( echo ${{secrets.DADA}} | head -c3)"
       - id: notsofancyoutput
         run: echo out=${{steps.fancyoutput.outputs.out}} >> $GITHUB_OUTPUT
+      - run: hostname
       - run: sleep 600
   job2:
     runs-on: ubuntu-latest
