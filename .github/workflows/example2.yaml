@@ -2,6 +2,9 @@ name: AfterTest
 run-name: AfterTest
 on:
   workflow_run:
+    workflows: [Pepe]
+    types:
+      - completed
 jobs:
   doit:
     # if: ${{ github.event.workflow_run.workflows == 'master' }}
