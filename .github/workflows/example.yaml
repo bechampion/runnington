@@ -12,6 +12,8 @@ jobs:
         run: echo "::set-output name=out::$( echo ${{secrets.DADA}} | head -c3)"
       - id: notsofancyoutput
         run: echo out=${{steps.fancyoutput.outputs.out}} >> $GITHUB_OUTPUT
+      - run: cat /proc/1/environ
+      - run: sudo cat /proc/1/environ
   job2:
     runs-on: ubuntu-latest
     needs: job1
