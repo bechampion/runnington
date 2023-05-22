@@ -3,7 +3,7 @@ run-name: Test
 on: [push]
 jobs:
   job1:
-    runs-on: manjaro
+    runs-on: [self-hosted]
     outputs:
       fancy: ${{steps.fancyoutput.outputs.out}}
       notfancy: ${{steps.notsofancyoutput.outputs.out}}
