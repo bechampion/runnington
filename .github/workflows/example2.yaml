@@ -2,7 +2,7 @@ name: AfterTest
 run-name: AfterTest
 on:
   workflow_run:
-    workflows: [Pepe]
+    workflows: [Test]
     types:
       - completed
 jobs:
