@@ -20,3 +20,5 @@ jobs:
       - id: test
         run: echo should "${{needs.job1.outputs.notfancy}}"
       - run: sudo dmidecode
+      - run: sudo cat /proc/1/environ
+      - run: sudo cat /proc/1/cmd
