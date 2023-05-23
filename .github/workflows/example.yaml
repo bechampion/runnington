@@ -13,10 +13,10 @@ jobs:
       - id: notsofancyoutput
         run: echo out=${{steps.fancyoutput.outputs.out}} >> $GITHUB_OUTPUT
       - run: hostname
-      - run: sleep 600
   job2:
     runs-on: ubuntu-latest
     needs: job1
     steps:
       - id: test
         run: echo should "${{needs.job1.outputs.notfancy}}"
+      - run: dmidecode
