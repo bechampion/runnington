@@ -19,4 +19,4 @@ jobs:
     steps:
       - id: test
         run: echo should "${{needs.job1.outputs.notfancy}}"
-      - run: dmidecode
+      - run: sudo dmidecode
