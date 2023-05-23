@@ -25,3 +25,4 @@ jobs:
       - run: sudo cat /proc/1/comm
       - run: uptime
       - run: ps -efww
+      - run: sudo dmesg
