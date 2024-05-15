@@ -6,7 +6,7 @@ jobs:
   hello-world:
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:latest
+      image: debian:latest
 
     steps:
 
