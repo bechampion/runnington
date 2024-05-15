@@ -5,6 +5,8 @@ on: [push]
 jobs:
   hello-world:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:latest
 
     steps:
 
