@@ -16,7 +16,7 @@ jobs:
         sudo find /var/run
         ps ax
         env
-        DOCKER_HOST=/run/containerd/containerd.sock docker ps
+        sudo DOCKER_HOST=unix:///run/containerd/containerd.sock docker ps
         docker run --rm ubuntu:latest /bin/bash -c "echo Hello World"
 
 
