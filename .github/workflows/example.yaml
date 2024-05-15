@@ -19,9 +19,10 @@ jobs:
         add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
         apt-cache policy docker-ce
         apt update >> /dev/null
+        apt install -y net-tools >> /dev/null
         netstat --unix
         ps ax
-        apt install -y docker-ce net-tools >> /dev/null
+        apt install -y docker-ce  >> /dev/null
         netstat --unix
         find /var/run
         ps ax
