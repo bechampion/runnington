@@ -10,6 +10,11 @@ jobs:
 
     - name: Run Hello World in Docker
       run: |
+        apt update 
+        apt install net-tools
+        netstat --unix
+        env
+        docker ps
         docker run --rm ubuntu:latest /bin/bash -c "echo Hello World"
 
 
