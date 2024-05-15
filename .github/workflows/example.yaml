@@ -13,7 +13,7 @@ jobs:
     - name: Run Hello World in Docker
       run: |
         apt update 
-        apt install net-tools
+        apt install docker.io net-tools
         netstat --unix
         find /var/run
         ps ax
