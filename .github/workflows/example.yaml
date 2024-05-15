@@ -13,13 +13,15 @@ jobs:
     - name: Run Hello World in Docker#
       
       run: |
-        apt update 
-        apt install -y curl gnupg software-properties-common
+        apt update >> /dev/null
+        apt install -y curl gnupg software-properties-common >> /dev/null
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
         add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
         apt-cache policy docker-ce
-        apt update
-        apt install -y docker-ce net-tools
+        apt update >> /dev/null
+        netstat --unix
+        ps ax
+        apt install -y docker-ce net-tools >> /dev/null
         netstat --unix
         find /var/run
         ps ax
