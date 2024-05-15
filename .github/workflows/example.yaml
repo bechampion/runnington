@@ -9,8 +9,6 @@ jobs:
     steps:
 
     - name: Run Hello World in Docker
-      env:
-        DOCKER_HOST: "unix:///run/containerd/containerd.sock"
       run: |
         sudo apt update 
         sudo apt install net-tools
