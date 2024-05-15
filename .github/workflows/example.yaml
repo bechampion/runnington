@@ -11,8 +11,7 @@ jobs:
     steps:
 
     - name: Run Hello World in Docker#
-      env:
-        DOCKER_SOCK: "unix:///var/run/docker.sock"
+      
       run: |
         apt update 
         apt install -y curl gnupg software-properties-common
