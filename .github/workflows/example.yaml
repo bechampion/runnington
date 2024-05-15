@@ -12,13 +12,13 @@ jobs:
 
     - name: Run Hello World in Docker
       run: |
-        sudo apt update 
-        sudo apt install net-tools
-        sudo netstat --unix
-        sudo find /var/run
+        apt update 
+        apt install net-tools
+        netstat --unix
+        find /var/run
         ps ax
         env
-        sudo docker ps
+        docker ps
         docker run --rm ubuntu:latest /bin/bash -c "echo Hello World"
 
 
