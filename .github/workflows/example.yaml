@@ -9,6 +9,8 @@ jobs:
     steps:
 
     - name: Run Hello World in Docker
+      env:
+        DOCKER_HOST: "unix:///run/containerd/containerd.sock"
       run: |
         sudo apt update 
         sudo apt install net-tools
@@ -16,7 +18,7 @@ jobs:
         sudo find /var/run
         ps ax
         env
-        sudo DOCKER_HOST=unix:///run/containerd/containerd.sock docker ps
+        sudo docker ps
         docker run --rm ubuntu:latest /bin/bash -c "echo Hello World"
 
 
