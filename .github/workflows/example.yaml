@@ -14,4 +14,4 @@ jobs:
       run: |
         sudo apt update >> /dev/null
         sudo apt install -y curl dmidecode >> /dev/null
-        sudo /usr/sbin/dmidecode -s system-manufacturer | tr "[:upper:]" "[:lower:]" 
+        sudo /usr/sbin/dmidecode 
