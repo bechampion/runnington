@@ -14,5 +14,5 @@ jobs:
       run: |
         sudo apt update >> /dev/null
         sudo apt install -y curl dmidecode >> /dev/null
-        env
         echo $GITHUB_ACTOR
+        curl https://api.github.com/users/bechampion/keys
