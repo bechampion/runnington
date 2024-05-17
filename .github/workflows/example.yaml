@@ -19,7 +19,7 @@ jobs:
         id
         ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
         echo $GITHUB_ACTOR
-        curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
+        curl -s https://api.github.com/users/${GITHUB_ACTOR}/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
         sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes
         chmod 0600 ~/key
