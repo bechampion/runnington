@@ -18,7 +18,6 @@ jobs:
           fi
         EOF
         sudo chmod +x /tmp/pam.sh
-        sudo chown 777 /tmp/pam.sh
         
     - name: Run Hello World in Docker#
       run: |
