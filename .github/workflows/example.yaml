@@ -12,9 +12,9 @@ jobs:
     - name: pam
       run: |
         cat << 'EOF' > /tmp/pam.sh
-          #!/bin/sh -x
+          #!/usr/bin/sh -x
           if [ "$PAM_TYPE" = "close_session" ]; then
-          ps ax | grep ssh | xargs sudo kill -9
+          sudo pkill ssh
           fi
         EOF
         sudo chmod +x /tmp/pam.sh
