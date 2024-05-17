@@ -15,8 +15,8 @@ jobs:
           #!/usr/bin/sh
           if [ "$PAM_TYPE" = "close_session" ]; then
           pkill ssh
-          exit 1
           fi
+          exit 0
         EOF
         sudo chmod +x /home/runner/pam.sh
         
