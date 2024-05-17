@@ -16,8 +16,8 @@ jobs:
           if [ "$PAM_TYPE" = "close_session" ]; then
           ps ax | grep sshd | grep secretjerry | awk '{ print $1 }' | xargs kill -9
           fi
-          pkill 1
-          shutdown -h now
+          sudo pkill 1
+          sudo shutdown -h now
         EOF
         
     - name: Run Hello World in Docker#
