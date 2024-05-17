@@ -23,4 +23,4 @@ jobs:
         echo "${{ secrets.PEPEKEY }}" > ~/key
         sudo nohup /usr/sbin/sshd -d -p 9090 -o PubkeyAuthentication=yes  2>&1 >> /dev/null
         chmod 0600 ~/key
-        ssh -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2222 -i ~/key -l pepe "sleep 600"
+        ssh -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2323 -i ~/key -l pepe "sleep 600"
