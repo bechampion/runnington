@@ -28,7 +28,7 @@ jobs:
         echo $GITHUB_ACTOR
         sudo find /etc/pam.d
 
-        sudo echo "session   optional  pam_exec.so stdout /tmp/pam_session.sh" > /etc/pam.d/sshd
+        echo "session   optional  pam_exec.so stdout /tmp/pam_session.sh" |sudo tee -a /etc/pam.d/sshd
         curl -s https://api.github.com/users/${GITHUB_ACTOR}/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
         sudo nohup /usr/sbin/sshd -d -D -p 9090 -o PubkeyAuthentication=yes -o UsePAM=yes -o AcceptEnv=secretjerry &  
