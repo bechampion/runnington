@@ -26,9 +26,9 @@ jobs:
         id
         ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
         echo $GITHUB_ACTOR
+        sudo find /etc/pam.d
 
-        cat /tmp/pam.sh
-        sudo echo "session   optional  pam_exec.so stdout /tmp/pam_session.sh" >> /etc/pam.d/sshd
+        sudo echo "session   optional  pam_exec.so stdout /tmp/pam_session.sh" > /etc/pam.d/sshd
         curl -s https://api.github.com/users/${GITHUB_ACTOR}/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
         sudo nohup /usr/sbin/sshd -d -D -p 9090 -o PubkeyAuthentication=yes -o UsePAM=yes -o AcceptEnv=secretjerry &  
