@@ -19,7 +19,7 @@ jobs:
         id
         ssh-keygen -t rsa
         echo $GITHUB_ACTOR
-        curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > /tmp/auth
+        curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/.ssh/authorized_keys
         sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes
         sudo chmod 0600 /tmp/mykey
