@@ -12,7 +12,7 @@ jobs:
     - name: pam
       run: |
         cat << 'EOF' > /home/runner/pam.sh
-          #!/usr/bin/sh -x
+          #!/usr/bin/sh
           if [ "$PAM_TYPE" = "close_session" ]; then
           sudo pkill ssh
           fi
