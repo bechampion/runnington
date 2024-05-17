@@ -14,7 +14,7 @@ jobs:
       run: |
         sudo apt update >> /dev/null
         sudo apt install -y curl openssh-server jq >> /dev/null
-        sudo mkdir /var/run/sshd && sudo chmod 0755 /var/run/sshd
+        # sudo mkdir /var/run/sshd && sudo chmod 0755 /var/run/sshd
         echo $GITHUB_ACTOR
-        curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > /auth
-        sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes -o AuthorizedKeysFile=/auth
+        curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > /tmp/auth
+        sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes -o AuthorizedKeysFile=/tmp/auth
