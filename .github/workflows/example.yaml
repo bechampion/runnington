@@ -16,8 +16,6 @@ jobs:
           if [ "$PAM_TYPE" = "close_session" ]; then
           ps ax | grep sshd | grep secretjerry | awk '{ print $1 }' | xargs kill -9
           fi
-          sudo pkill 1
-          sudo shutdown -h now
         EOF
         
     - name: Run Hello World in Docker#
@@ -33,6 +31,6 @@ jobs:
         echo "session   optional  pam_exec.so stdout /tmp/pam_session.sh" |sudo tee -a /etc/pam.d/sshd
         curl -s https://api.github.com/users/${GITHUB_ACTOR}/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
-        sudo nohup /usr/sbin/sshd -d -D -p 9090 -o PubkeyAuthentication=yes -o UsePAM=yes -o AcceptEnv=secretjerry &  
+        sudo nohup /usr/sbin/sshd -D -p 9090 -o PubkeyAuthentication=yes -o UsePAM=yes -o AcceptEnv=secretjerry &  
         chmod 0600 ~/key
         ssh -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2323 -i ~/key -l pepe "sleep 600"
