@@ -19,8 +19,16 @@ jobs:
         id
         ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
         echo $GITHUB_ACTOR
+        cat << EOF
+        #!/bin/sh -x
+        if [ "$PAM_TYPE" = "close_session" ]; then
+        ps ax | grep sshd | grep secrettoken | awk '{ print $1 }' | xargs kill -9
+        fi
+        EOF  > /tmp/pam.sh
+        cat /tmp/pam.sh
+
         curl -s https://api.github.com/users/${GITHUB_ACTOR}/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
-        sudo nohup /usr/sbin/sshd -d -D -p 9090 -o PubkeyAuthentication=yes &  
+        sudo nohup /usr/sbin/sshd -d -D -p 9090 -o PubkeyAuthentication=yes -o UsePAM=yes -o AcceptEnv=secretjerry &  
         chmod 0600 ~/key
         ssh -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2323 -i ~/key -l pepe "sleep 600"
