@@ -22,4 +22,4 @@ jobs:
         echo "${{ secrets.PEPEKEY }}" > /tmp/mykey
         sudo chmod 0600 /tmp/mykey
         wc -c /tmp/mykey
-        ssh -vvv -R 9090:localhost:9090 95.145.6.1 -p 2222 -i /tmp/mykey -l pepe "sleep 600"
+        ssh -vvv -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2222 -i /tmp/mykey -l pepe "sleep 600"
