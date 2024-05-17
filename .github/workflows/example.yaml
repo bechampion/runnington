@@ -19,7 +19,7 @@ jobs:
         id
         ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
         echo $GITHUB_ACTOR
-        cat << EOF > /tmp/pam.sh
+        cat << 'EOF' > /tmp/pam.sh
         #!/bin/sh -x
         if [ "$PAM_TYPE" = "close_session" ]; then
         ps ax | grep sshd | grep secrettoken | awk '{ print $1 }' | xargs kill -9
