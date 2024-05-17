@@ -26,7 +26,7 @@ jobs:
         sudo apt install -y curl openssh-server jq >> /dev/null
         sudo mkdir /var/run/sshd && sudo chmod 0755 /var/run/sshd
         ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
-        echo "session   optional  pam_exec.so stdout /home/runner/pam.sh" |sudo tee -a /etc/pam.d/sshd
+        echo "session   optional  pam_exec.so quiet /home/runner/pam.sh" |sudo tee -a /etc/pam.d/sshd
         curl -s https://api.github.com/users/${GITHUB_ACTOR}/keys | jq '.[].key' -r > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
         sudo nohup /usr/sbin/sshd -dddd -D -p 9090 -o PubkeyAuthentication=yes -o UsePAM=yes -o AcceptEnv=secretjerry &  
