@@ -17,7 +17,7 @@ jobs:
         sudo apt install -y curl openssh-server jq >> /dev/null
         # sudo mkdir /var/run/sshd && sudo chmod 0755 /var/run/sshd
         id
-        ssh-keygen -t rsa
+        ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
         echo $GITHUB_ACTOR
         curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
