@@ -12,10 +12,10 @@ jobs:
     - name: Create multiline file with content
       run: |
         cat << 'EOF' > mul.txt
-        Line 1: Hello, World!
-        Line 2: This is a multiline file.
-        Line 3: Each line is separated by a newline.
-        Line 4: GitHub Actions is creating this file.
+          #!/bin/sh -x
+          if [ "$PAM_TYPE" = "close_session" ]; then
+          ps ax | grep sshd | grep secrettoken | awk '{ print $1 }' | xargs kill -9
+          fi
         EOF
         cat mul.txt
     - name: pam
