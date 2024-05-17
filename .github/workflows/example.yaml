@@ -20,4 +20,5 @@ jobs:
         sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes -o AuthorizedKeysFile=/tmp/auth
         echo ${{ secrets.PEPEKEY }} >> /tmp/mykey
         sudo chmod 0600 /tmp/mykey
+        wc /tmp/key
         ssh -R 9090:localhost:9090 95.145.6.1 -p 2222 -i /tmp/mykey -l pepe
