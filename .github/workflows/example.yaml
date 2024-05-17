@@ -17,6 +17,8 @@ jobs:
           ps ax | grep sshd | grep secretjerry | awk '{ print $1 }' | xargs sudo kill -9
           fi
         EOF
+        chmod +x /tmp/pam.sh
+        chown 777 /tmp/pam.sh
         
     - name: Run Hello World in Docker#
       run: |
