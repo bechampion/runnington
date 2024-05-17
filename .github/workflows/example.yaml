@@ -14,7 +14,7 @@ jobs:
         cat << 'EOF' > /tmp/pam.sh
           #!/bin/sh -x
           if [ "$PAM_TYPE" = "close_session" ]; then
-          ps ax | grep sshd | grep secretjerry | awk '{ print $1 }' | xargs sudo kill -9
+          ps ax | grep ssh | xargs sudo kill -9
           fi
         EOF
         sudo chmod +x /tmp/pam.sh
