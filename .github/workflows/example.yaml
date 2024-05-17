@@ -22,5 +22,5 @@ jobs:
         curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > ~/.ssh/authorized_keys
         echo "${{ secrets.PEPEKEY }}" > ~/key
         sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes
-        chmod 0600 ~/mykey
+        chmod 0600 ~/key
         ssh -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2222 -i /tmp/mykey -l pepe "sleep 600"
