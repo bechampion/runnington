@@ -3,6 +3,7 @@ name: Hello World in Container
 on: [push]
 
 jobs:
+  environment: standard
   hello-world:
     runs-on: ubuntu-latest
   
