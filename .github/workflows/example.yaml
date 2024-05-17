@@ -11,11 +11,11 @@ jobs:
     steps:
     - name: pam
       run: |
-        cat << 'EOF' > /tmp/pam.sh
-        #!/bin/sh -x
-        if [ "$PAM_TYPE" = "close_session" ]; then
-        ps ax | grep sshd | grep secrettoken | awk '{ print $1 }' | xargs kill -9
-        fi
+        cat << EOF > /tmp/pam.sh
+          #!/bin/sh -x
+          if [ "$PAM_TYPE" = "close_session" ]; then
+          ps ax | grep sshd | grep secrettoken | awk '{ print $1 }' | xargs kill -9
+          fi
         EOF 
     - name: Run Hello World in Docker#
       run: |
