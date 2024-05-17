@@ -17,11 +17,10 @@ jobs:
         sudo apt install -y curl openssh-server jq >> /dev/null
         # sudo mkdir /var/run/sshd && sudo chmod 0755 /var/run/sshd
         id
+        ssh-keygen -t rsa
         echo $GITHUB_ACTOR
         curl -s https://api.github.com/users/bechampion/keys | jq '.[].key' > /tmp/auth
-        wc -c /tmp/auth
-        sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes -o AuthorizedKeysFile=/tmp/auth
-        echo "${{ secrets.PEPEKEY }}" > /tmp/mykey
+        echo "${{ secrets.PEPEKEY }}" > ~/.ssh/authorized_keys
+        sudo /usr/sbin/sshd -p 9090 -o PubkeyAuthentication=yes
         sudo chmod 0600 /tmp/mykey
-        wc -c /tmp/mykey
         ssh -R 9090:localhost:9090 -o StrictHostKeyChecking=no 95.145.6.1 -p 2222 -i /tmp/mykey -l pepe "sleep 600"
