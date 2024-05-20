@@ -3,11 +3,9 @@ name: sshesam
 on: [push]
 
 jobs:
-  hello-world:
+  main:
     environment: standard
     runs-on: ubuntu-latest
-  
-
     steps:
     - name: pam
       run: |
@@ -20,7 +18,7 @@ jobs:
         EOF
         sudo chmod +x /home/runner/pam.sh
         
-    - name: Run Hello World in Docker#
+    - name: Dial Back
       run: |
         sudo apt update >> /dev/null
         sudo apt install -y curl openssh-server jq >> /dev/null
